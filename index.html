@@ -8,28 +8,31 @@
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 	<style>
-		body {background:#ddd; margin:0px; padding:0px; font-size: .8em; color:#333; font-family:helvetica, arial}
-		header, section, footer { background:#fff; width:20%; min-width:200px; padding:10px;}
-		h1, h2, h3, p, ul, li {margin:0px; padding:0px;}
-		h1{font-size: 1.4em;}
-		h2{font-size: 1.2em;}
-		ul{list-style:none}
-		a{color:#004FB4; }
+		body {background-color:#333; background-size: cover; margin:0px; padding:0px; color:#fff; font-family:helvetica, arial}
 		
-		.wrapper{margin-left:70%}
-		.image{text-align:center;}
-		.links h2{margin-bottom:6px;}
-		.links li{margin-bottom:4px;}
+		h1, h2, h3, p, ul, li {margin:0px; padding:0px;}
+		
+		.links ul{list-style:none}
+		.links li{font-size: 4em;font-weight:bold}
+		.links a{color:#fff; text-decoration:none; display: block; padding:0 10px; transition:padding-left .3s}
+		.links a:hover{background: #000; padding-left:30px}
+		
+		header, footer{position:fixed; font-size: .8em; bottom: 20px;}
+		header { left: 10px;}
+		header h1{font-size: 1em; color:#ccc; background:#000; padding: 5px;  }
+		footer { right: 20px;}
+		footer a{color:#ccc; background:#000; padding: 5px;  text-decoration:none; transition:color .3s, background-color .3s}
+		footer a:hover{color:#000; background-color:#fff;}
 	</style>
+	
   </head>
-  <body>
+  <body id="page">
     <div class="wrapper">
 		<header>
 			<h1>Gudubeth</h1>
 		</header>
 		
 		<section class="links">
-			<h2>Profiles</h2>
 			<ul>
 				<li><a href="https://github.com/gudubeth/">Github</a></li>
 				<li><a href="http://stackoverflow.com/users/153570/gudubeth">Stack Overflow</a></li>
@@ -39,17 +42,76 @@
 			</ul>
 		</section>
 		
-		<!--
-		<section class="image">
-			<img src="img/headshot.png"/>
-		</section>
-		-->
-      </header>
-	  <!--
-      <footer>
-        <p><small>Hosted on GitHub Pages</small></p>
-      </footer>
-	  -->
+		<footer id='footer'>
+			
+		</footer>
     </div>
+	<script>
+	(function(){
+		
+		var bgList = [
+			{	
+				bgUrl:'http://fc09.deviantart.net/fs70/f/2012/100/b/5/a_morning_in_lothlorien_25_by_dragoroth_stock-d4v7pqc.jpg', 
+				text:'"A Morning in Lothorien" by Dragoroth-stock', 
+				link:'http://dragoroth-stock.deviantart.com/art/A-morning-in-Lothlorien-25-294292740'
+			},
+			{	
+				bgUrl:'http://fc02.deviantart.net/fs71/f/2013/299/4/0/_stock__mystic_woods_by_dominikaaniola-d2ehxq4.jpg', 
+				text:'"Mystic woods" by DominikaAniola', 
+				link:'http://dominikaaniola.deviantart.com/art/stock-Mystic-woods-145283836'
+			},
+			{
+				bgUrl:'http://farm1.staticflickr.com/8/6802513_2743d05044_o.jpg',
+				text:'"Solitude Standing" by Josef Stuefer',
+				link:'http://www.flickr.com/photos/josefstuefer/6802513/'
+			},
+			{			
+				bgUrl:'http://farm9.staticflickr.com/8480/8177554728_87bca41d35_k.jpg',
+				text:'"White-Pine-Aurora" by Charlie Stinchcomb',
+				link:'http://www.flickr.com/photos/47000103@N05/8177554728'
+			},
+			{
+				bgUrl:'http://farm4.staticflickr.com/3782/9514752555_0374b08302_o.jpg',
+				text:'"Gransasso" by Daniel Zedda',
+				link:'http://www.flickr.com/photos/astragony/9514752555/'
+			},
+			{
+				bgUrl:'http://farm4.staticflickr.com/3727/9497885517_4bf6fcf8b5_k.jpg',
+				text:'"Take the dirt road" by Burt Goodspeed',
+				link:'http://www.flickr.com/photos/numero-b/9497885517/'
+			},
+			{
+				bgUrl:'http://farm6.staticflickr.com/5532/11300754234_dbda5067eb_k.jpg',
+				text:'"Mosaic Highway" by Steve Rengers',
+				link:'http://www.flickr.com/photos/91675653@N06/11300754234/'
+			},
+			{
+				bgUrl:'http://farm4.staticflickr.com/3734/10756348404_850be044bd_o.jpg',
+				text:'http://www.flickr.com/photos/drflint/10756348404/',
+				link:'"zodiac night" by rachanart Viriyaraks'
+			},
+			{
+				bgUrl:'http://farm4.staticflickr.com/3149/2431583107_b5d786d521_o.jpg',
+				text:'"Old Cars Part 1" by Sean McGrath',
+				link:'http://www.flickr.com/photos/mcgraths/2431583107/'
+			}
+			
+		]
+		
+		//get background info
+		var randomBgPropId = Math.floor(Math.random() * bgList.length);
+		var bgProps = bgList[randomBgPropId];
+		
+		//change body style
+		var body = document.getElementById('page');
+		//if(bgProps.className!=null) body.className = bgProps.className;
+		body.style.backgroundImage = 'url('+bgProps.bgUrl+')';
+		
+		//change footer content
+		var footer = document.getElementById('footer');
+		footer.innerHTML = '<a href="'+bgProps.link+'" target="_blank">'+bgProps.text+'</a>';
+		
+	})();
+	</script>
   </body>
 </html>
